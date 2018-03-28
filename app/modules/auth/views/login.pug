@@ -1,0 +1,26 @@
+extends ../../../templates/master
+
+block main
+	.container
+		figure.text-center
+			a(href="#")
+				img.img-fluid.full_logo.shadow(src="img/full_logo.jpg", alt="")
+		.row
+			.col-sm-5.mx-auto
+				.card.m-3
+					.card-body.shadow
+						.container
+							h3 Login
+							form(method="POST" action="/login")
+								.form-group
+									label(for='exampleInputEmail1') Email address:
+									input#exampleInputEmail1.form-control(type='email', name="email" aria-describedby='emailHelp', placeholder='Enter email')
+									small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
+								.form-group
+									label(for='exampleInputPassword1') Password:
+									a.float-right(href='#') Forgot Password?
+									input#exampleInputPassword1.form-control(type='password', name="password" placeholder='Password')
+								button.btn.btn-primary.btn-block(type='submit') Submit
+								.text-center.mt-2
+									| Dont have an account?
+									a(href="#") Create one
