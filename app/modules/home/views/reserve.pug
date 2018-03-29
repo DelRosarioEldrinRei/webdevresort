@@ -1,0 +1,64 @@
+extends ../../../templates/master
+
+block main
+	.container
+		//- figure.text-center
+		//- 	a(href="#")
+		//- 		img.img-fluid.full_logo.shadow(src="img/full_logo.jpg", alt="")
+		.row
+			.col-sm-5.mx-auto
+				.card.m-3
+					.card-body.shadow
+						.container
+							h3 Reserve Tickets
+							form
+								.container
+									.row
+										.col-sm-6.pl-0
+											.form-group
+												#datetimepicker4.input-group.date(data-target-input='nearest')
+													input.form-control.datetimepicker-input(type='text', data-target='#datetimepicker4' placeholder="Input Date")
+													.input-group-append(data-target='#datetimepicker4', data-toggle='datetimepicker')
+														.input-group-text
+															i.fa.fa-calendar(aria-hidden='true')
+									.row
+										label Choose Pool:
+										.col-sm-12.p-0
+											.row
+												.col-sm-6.p-0
+													label.btn.btn-primary.btn-block
+														input#optionpool1(type='radio', name='optionpool', autocomplete='off')
+														|  Private
+												.col-sm-6.p-0
+													label.btn.btn-primary.ml-1.btn-block
+														input#optionpool2(type='radio', name='optionpool', autocomplete='off' checked="checked")
+														|  Public
+								.form-group#ifYes
+									.row
+										label Choose Time:
+										.col-sm-12.p-0
+											.row
+												.col-sm-6.pr-0
+													label.btn.btn-primary.btn-block
+														input#optionday1(type='radio', name='optionday', autocomplete='off')
+														|  Day
+												.col-sm-6.pl-0
+													label.btn.btn-primary.ml-1.btn-block
+														input#optionday2(type='radio', name='optionday', autocomplete='off')
+														|  Night
+
+								button.btn.btn-primary.btn-block(type='submit') Submit
+block addjs
+	script.
+		$(function () {
+			$('#datetimepicker4').datetimepicker({
+				format: 'L'
+			});
+		});
+
+		$('#optionpool1').click(function() {
+				$('#ifYes').slideUp();
+		});
+		$('#optionpool2').click(function() {
+				$('#ifYes').slideDown();
+		});

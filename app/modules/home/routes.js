@@ -49,6 +49,11 @@ router.route('/gallery')
   res.render("home/views/gallery")
 });
 
+router.route('/reserve')
+.get((req, res) => {
+  res.render("home/views/reserve")
+});
+
 
 /**
  * Here we just export said router on the 'index' property of this module.
