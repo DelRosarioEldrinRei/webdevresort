@@ -5,7 +5,7 @@ block content
         span.fa(class= user ? 'fa-user' : 'fa-user-plus')
         | &nbsp; #{user ? 'Edit': 'Add'} User
 
-    form(method="POST" action=`/admin/users${user ? `/${user.id}?_method=PUT` : ''}`)
+    form(method="POST" action=`/signup${user ? `/${user.id}?_method=PUT` : ''}`)
         .field
             .label Name
             .control
