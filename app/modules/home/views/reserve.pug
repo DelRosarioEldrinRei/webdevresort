@@ -151,9 +151,11 @@ block main
 						span.step
 block addjs
 	script.
+		let start = moment().add(7, 'days').calendar(); 
 		$(function () {
 			$('#datetimepicker4').datetimepicker({
-				format: 'L'
+				format: 'L',
+				minDate: start
 			});
 		});
 
