@@ -51,6 +51,7 @@ body {
 
 .min-height {
   min-height: 16rem
+  
 }
 
 /* Mark input boxes that gets an error on validation: */

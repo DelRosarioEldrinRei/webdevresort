@@ -2,7 +2,7 @@ extends ../../../templates/master
 block prepend main
 	.container
 		h1.my-4.text-center.text-lg-left Thumbnail Gallery
-			button.btn.btn-primary.btn-lg.float-lg-right.float-md-center(data-toggle="modal" data-target="#exampleModal") Add Photo 
+			button.btn.btn-primary.btn-lg.float-lg-right.float-sm-center(data-toggle="modal" data-target="#exampleModal") Add Photo 
 			#exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
 				.modal-dialog(role='document')
 					.modal-content
@@ -25,36 +25,3 @@ block prepend main
 				.col-lg-3.col-md-4.col-sm-6
 					a.d-block.mb-4(href='#')
 						img.img-fluid.img-thumbnail.min-height(src=`/img/uploads/${image.strImage}`, alt='')
-			//- .col-lg-3.col-md-4.col-xs-6
-			//- 	a.d-block.mb-4(href='#')
-			//- 		img.img-fluid.img-thumbnail(src='http://placehold.it/400x300', alt='')
-			//- .col-lg-3.col-md-4.col-xs-6
-			//- 	a.d-block.mb-4(href='#')
-			//- 		img.img-fluid.img-thumbnail(src='http://placehold.it/400x300', alt='')
-			//- .col-lg-3.col-md-4.col-xs-6
-			//- 	a.d-block.mb-4(href='#')
-			//- 		img.img-fluid.img-thumbnail(src='http://placehold.it/400x300', alt='')
-			//- .col-lg-3.col-md-4.col-xs-6
-			//- 	a.d-block.mb-4(href='#')
-			//- 		img.img-fluid.img-thumbnail(src='http://placehold.it/400x300', alt='')
-			//- .col-lg-3.col-md-4.col-xs-6
-			//- 	a.d-block.mb-4(href='#')
-			//- 		img.img-fluid.img-thumbnail(src='http://placehold.it/400x300', alt='')
-			//- .col-lg-3.col-md-4.col-xs-6
-			//- 	a.d-block.mb-4(href='#')
-			//- 		img.img-fluid.img-thumbnail(src='http://placehold.it/400x300', alt='')
-			//- .col-lg-3.col-md-4.col-xs-6
-			//- 	a.d-block.mb-4(href='#')
-			//- 		img.img-fluid.img-thumbnail(src='http://placehold.it/400x300', alt='')
-			//- .col-lg-3.col-md-4.col-xs-6
-			//- 	a.d-block.mb-4(href='#')
-			//- 		img.img-fluid.img-thumbnail(src='http://placehold.it/400x300', alt='')
-			//- .col-lg-3.col-md-4.col-xs-6
-			//- 	a.d-block.mb-4(href='#')
-			//- 		img.img-fluid.img-thumbnail(src='http://placehold.it/400x300', alt='')
-			//- .col-lg-3.col-md-4.col-xs-6
-			//- 	a.d-block.mb-4(href='#')
-			//- 		img.img-fluid.img-thumbnail(src='http://placehold.it/400x300', alt='')
-			//- .col-lg-3.col-md-4.col-xs-6
-			//- 	a.d-block.mb-4(href='#')
-			//- 		img.img-fluid.img-thumbnail(src='http://placehold.it/400x300', alt='')

@@ -57,7 +57,7 @@ router.route('/gallery')
     db.query(queryString,[req.body.strImage], function (err, results, field) {
          if (err) return res.send(err);
          req.session.user.strImage = req.body.strImage;
-         res.redirect('/index');
+         res.redirect('/home');
     });
   })
 
@@ -66,7 +66,7 @@ router.route('/reserve')
     res.render("home/views/reserve")
   })
   .post((req, res) => {
-    res.redirect("/index")    
+    res.redirect("/home")    
   })
 
 
