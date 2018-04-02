@@ -7,7 +7,7 @@ router.use(authMiddleware.hasAuth);
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
-    cb(null, 'public/img')
+    cb(null, 'public/img/uploads')
   },
   filename: function (req, file, cb) {
     
