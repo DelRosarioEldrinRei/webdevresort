@@ -5,9 +5,10 @@ block main
 		.row
 			.col-sm-12.mx-auto
 				.container
-					h3 Reserve
 					form(method="POST" action="/reserve")#regForm
 						.tab.container
+							.row
+								h3.ml-4 Reserve Details
 							.row
 								.col-sm-6.pl-0
 									.form-group
@@ -44,7 +45,7 @@ block main
 													|  Night
 						.tab.container
 							.row
-								h3.ml-4 Ticket
+								h3.ml-4 Reserve Tickets
 							.row.mt-3
 								.col-md-6.text-center
 									h3.d-inline Adult &nbsp;
@@ -99,9 +100,7 @@ block main
 													option=i++
 						.tab.container
 							.row
-								h3.ml-4 Ticket
-							.row.mt-5
-								h3.pl-4 Rooms
+								h3.ml-4 Reserve Rooms
 							.row.mt-2
 								.col-lg-3.col-md-6.mb-4.mx-auto
 									.card
@@ -158,10 +157,25 @@ block addjs
 
 		$('#optionpool1').click(function() {
 				$('#ifYes').slideUp();
+				document.getElementById("nextBtn").innerHTML = "Submit";
+				$("#nextBtn").prop("type", "submit");
 		});
 		$('#optionpool2').click(function() {
 				$('#ifYes').slideDown();
+				document.getElementById("nextBtn").innerHTML = "Next";
+				$("#nextBtn").prop("type", "button");
 		});
+
+		if (document.getElementById("nextBtn").innerText == "Submit") {
+			
+		}
+
+		let privatePool = document.getElementById("optionpool1");
+		if(privatePool.checked) {
+			//- document.getElementById("nextBtn").innerHTML = "Submit";
+			//- document.getElementById("regForm").submit();
+			//- return false;
+		}
 
 		var currentTab = 0; // Current tab is set to be the first tab (0)
 		showTab(currentTab); // Display the current tab
@@ -184,7 +198,6 @@ block addjs
 			// ... and run a function that displays the correct step indicator:
 			fixStepIndicator(n)
 		}
-
 		function nextPrev(n) {
 			// This function will figure out which tab to display
 			var x = document.getElementsByClassName("tab");

@@ -36,6 +36,6 @@ module.exports = (req, res) => {
     });
 
     function render(users) {
-        res.render('home/views/index', { users: users });
+        res.render('home/views/landing', { users: users });
     }
 }

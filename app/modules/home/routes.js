@@ -18,7 +18,15 @@ var upload = multer({storage: storage});
 
 var indexController = require('./controllers/index');
 
-router.get('/', indexController);
+router.route('/')
+  .get((req, res) => {
+    res.render("home/views/landing")
+  });
+
+router.route('/home')
+  .get((req, res) => {
+    res.render("home/views/index")
+  });
 
 router.route('/show')
 .get((req, res) => {
