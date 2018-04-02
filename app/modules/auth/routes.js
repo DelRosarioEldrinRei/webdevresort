@@ -1,11 +1,17 @@
 var express = require('express');
 var loginRouter = express.Router();
+var landingRouter = express.Router();
 var signupRouter = express.Router();
 var logoutRouter = express.Router();
 var router = express.Router();
 var app = express()
 
 var authMiddleware = require('./middlewares/auth');
+
+landingRouter.route('/')
+.get((req, res) => {
+  res.render("auth/views/landing")
+});
 
 loginRouter.route('/')
     .get(authMiddleware.noAuthed, (req, res) => {
@@ -62,5 +68,6 @@ signupRouter.post('/',(req,res) =>{
 })
 
 exports.login = loginRouter;
+exports.landing = loginRouter;
 exports.signup = signupRouter;
 exports.logout = logoutRouter;

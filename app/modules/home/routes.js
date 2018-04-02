@@ -20,11 +20,6 @@ var indexController = require('./controllers/index');
 
 router.get('/', indexController);
 
-router.route('/landing')
-.get((req, res) => {
-  res.render("home/views/landing")
-});
-
 router.route('/show')
 .get((req, res) => {
   res.render("home/views/show")
@@ -32,7 +27,15 @@ router.route('/show')
 
 router.route('/gallery')
   .get((req, res) => {
-    res.render("home/views/gallery")
+    var db = require('../../lib/database')();
+    // const queryString = 'SELECT strImage FROM tbl_gallery ORDER BY DESC';
+    db.query('SELECT strImage FROM tbl_gallery', function (err, results, fields) {
+      if (err) return res.send(err);
+      render(results);
+  });
+  function render(images) {
+    res.render("home/views/gallery", {images:images});
+  }
   })
   .post(upload.single('strImage'), (req, res) => {
     var db = require('../../lib/database')();
@@ -51,9 +54,12 @@ router.route('/gallery')
   })
 
 router.route('/reserve')
-.get((req, res) => {
-  res.render("home/views/reserve")
-});
+  .get((req, res) => {
+    res.render("home/views/reserve")
+  })
+  .post((req, res) => {
+    res.redirect("/index")    
+  })
 
 
 /**

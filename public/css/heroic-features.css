@@ -5,13 +5,13 @@
  */
 
 body {
-  padding-top: 54px;
+  padding-top: 3.4rem;
   background-color: #f7f9fb;
 }
 
-@media (min-width: 992px) {
+@media (min-width: 62rem) {
   body {
-    padding-top: 56px;
+    padding-top: 3.5rem;
   }
 }
 
@@ -20,12 +20,12 @@ body {
 } */
 
 .card-body {
-  min-height: 200px;
+  min-height: 12.5rem;
 }
 
 .logo {
-  width: 40px;
-  height: 40px;
+  width: 2.5rem;
+  height: 2.5rem;
 }
 
 .navbar-brand {
@@ -37,7 +37,7 @@ body {
 }
 
 .full_logo {
-  width: 300px;
+  width: 18.75rem;
   border-radius: 50%;
 }
 
@@ -47,4 +47,51 @@ body {
 
 .font-normal {
   font-size: 1.25rem;
+}
+
+.min-height {
+  min-height: 16rem
+}
+
+/* Mark input boxes that gets an error on validation: */
+input.invalid {
+  background-color: #ffdddd;
+}
+
+/* Hide all steps by default: */
+.tab {
+  display: none;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+#prevBtn {
+  background-color: #bbbbbb;
+}
+
+/* Make circles that indicate the steps of the form: */
+.step {
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbbbbb;
+  border: none;  
+  border-radius: 50%;
+  display: inline-block;
+  opacity: 0.5;
+}
+
+.step.active {
+  opacity: 1;
+}
+
+/* Mark the steps that are finished and valid: */
+.step.finish {
+  background-color: #4CAF50;
+}
+
+.tab {
+  display: none
 }
