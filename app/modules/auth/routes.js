@@ -2,25 +2,10 @@ var express = require('express');
 var loginRouter = express.Router();
 var signupRouter = express.Router();
 var logoutRouter = express.Router();
-var multer  = require('multer');
 var router = express.Router();
-var galleryRouter= express.Router();
-const ejs = require('ejs');
-
 var app = express()
 
 var authMiddleware = require('./middlewares/auth');
-
-var storage = multer.diskStorage({
-    destination: function (req, file, cb) {
-      cb(null, 'public/image')
-    },
-    filename: function (req, file, cb) {
-      
-      cb(null, file.fieldname + '-' + Date.now()+'.jpg')
-    }
-  })
-var upload = multer({storage: storage});
 
 loginRouter.route('/')
     .get(authMiddleware.noAuthed, (req, res) => {
@@ -70,33 +55,12 @@ signupRouter.post('/',(req,res) =>{
         if(err) return console.log(err); 
         delete user.password;
 
-
         req.session.user = user;
         console.log(req.session.user)
         return res.redirect('/login');
     });
 })
 
-galleryRouter.post('/', upload.single('strImage'), (req, res) => {
-    var db = require('../../lib/database')();
-    console.log(req.file);
-
-
-    if (typeof req.file !== 'undefined'){
-        req.body.strImage = req.file.filename;
-        console.log(req.file.filename)
-    }
-    const queryString = 'INSERT INTO tbl_gallery (strImage) VALUES (?)';    
-    db.query(queryString,[req.body.strImage], function (err, results, field) {
-         if (err) return res.send(err);
-         req.session.user.strImage = req.body.strImage;
-         res.redirect('/index');
-    });
-
-})
-
-
 exports.login = loginRouter;
 exports.signup = signupRouter;
 exports.logout = logoutRouter;
-exports.gallery = galleryRouter;
