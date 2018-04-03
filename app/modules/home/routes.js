@@ -66,7 +66,21 @@ router.route('/reserve/private')
     res.render("home/views/reserveprivate")
   })
   .post((req, res) => {
-    res.redirect("/home")    
+    res.redirect("/home")
+    var db = require('../../lib/database')();
+    var user = req.body;
+    var date = req.body.datDate;
+    console.log(req.file);
+    const queryString = `INSERT INTO tbl_reserve (intReserveAccountID, datDate) VALUES (?,?)`
+    db.query(queryString ,[req.session.user.intAccountsID, req.body.date ] , (err, results, fields) => {
+      console.log("hello");   
+      if(err) return console.log(err); 
+      delete user.password;
+
+      req.session.user = user;
+      console.log(req.session.user)
+      return res.redirect('/login');
+  });    
   })
 
 router.route('/reserve/public')
@@ -76,7 +90,6 @@ router.route('/reserve/public')
   .post((req, res) => {
     res.redirect("/home")    
   })
-
 
 /**
  * Here we just export said router on the 'index' property of this module.

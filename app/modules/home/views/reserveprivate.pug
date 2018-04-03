@@ -13,13 +13,13 @@ block main
 								.col-sm-6.pl-0
 									.form-group
 										#datetimepicker4.input-group.date(data-target-input='nearest')
-											input.form-control.datetimepicker-input.mt-4(type='text', data-target='#datetimepicker4' placeholder="Input Date")
+											input.form-control.datetimepicker-input.mt-4(id='datetimepicker1',type='text', data-target='#datetimepicker1', name='datDate',placeholder="Input Date")
 											.input-group-append.mt-4(data-target='#datetimepicker4', data-toggle='datetimepicker')
 												.input-group-text
 													i.fa.fa-calendar(aria-hidden='true')
 								.col-sm-6.pl-0
 									h3.mt-4 Price: ₱
-										span 3000.00
+										span 30,000.00
 						.text-right
 							button.btn.btn-success.ml-1(type="submit") Submit
 block addjs
@@ -31,3 +31,5 @@ block addjs
 				minDate: start
 			});
 		});
+	script.
+		var date = $("#datetimepicker1").data("datetimepicker").getDate();
