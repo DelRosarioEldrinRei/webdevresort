@@ -5,7 +5,7 @@ block main
 		.row
 			.col-sm-12.mx-auto
 				.container
-					form(method="POST" action="/reserve")#regForm
+					form(method="POST" action="/reserve/public")#regForm
 						.tab.container
 							.row
 								h3.ml-4 Reserve Details
@@ -17,19 +17,6 @@ block main
 											.input-group-append.mt-4(data-target='#datetimepicker4', data-toggle='datetimepicker')
 												.input-group-text
 													i.fa.fa-calendar(aria-hidden='true')
-							.form-group
-								.row
-									label Choose Pool:
-									.col-sm-12.p-0
-										.row
-											.col-sm-6.p-0
-												label.btn.btn-primary.btn-block
-													input#optionpool1(type='radio', name='optionpool', autocomplete='off')
-													|  Private
-											.col-sm-6.p-0
-												label.btn.btn-primary.ml-1.btn-block
-													input#optionpool2(type='radio', name='optionpool', autocomplete='off' checked="checked")
-													|  Public
 							.form-group#ifYes
 								.row
 									label Choose Time:
@@ -50,13 +37,13 @@ block main
 								.col-md-6.text-center
 									h3.d-inline Adult &nbsp;
 									select
-										- var i = 1
+										- var i = 0
 										while i <= 50
 											option=i++
 								.col-md-6.text-center
 									h3.d-inline Child &nbsp;
 									select
-										- var i = 1
+										- var i = 0
 										while i <= 50
 											option=i++
 							.row.mt-5
@@ -71,7 +58,7 @@ block main
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
 											select
-												- var i = 1
+												- var i = 0
 												while i <= 5
 													option=i++
 								.col-lg-3.col-md-6.mb-4.mx-auto
@@ -83,7 +70,7 @@ block main
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
 											select
-												- var i = 1
+												- var i = 0
 												while i <= 5
 													option=i++
 								.col-lg-3.col-md-6.mb-4.mx-auto
@@ -95,7 +82,7 @@ block main
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
 											select
-												- var i = 1
+												- var i = 0
 												while i <= 5
 													option=i++
 						.tab.container
@@ -111,7 +98,7 @@ block main
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
 											select
-												- var i = 1
+												- var i = 0
 												while i <= 5
 													option=i++
 								.col-lg-3.col-md-6.mb-4.mx-auto
@@ -123,7 +110,7 @@ block main
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
 											select
-												- var i = 1
+												- var i = 0
 												while i <= 5
 													option=i++
 								.col-lg-3.col-md-6.mb-4.mx-auto
@@ -135,7 +122,7 @@ block main
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
 											select
-												- var i = 1
+												- var i = 0
 												while i <= 5
 													option=i++
 						.text-right
@@ -155,27 +142,27 @@ block addjs
 			});
 		});
 
-		$('#optionpool1').click(function() {
-				$('#ifYes').slideUp();
-				document.getElementById("nextBtn").innerHTML = "Submit";
-				$("#nextBtn").prop("type", "submit");
-		});
-		$('#optionpool2').click(function() {
-				$('#ifYes').slideDown();
-				document.getElementById("nextBtn").innerHTML = "Next";
-				$("#nextBtn").prop("type", "button");
-		});
+		//- $('#optionpool1').click(function() {
+		//- 		$('#ifYes').slideUp();
+		//- 		document.getElementById("nextBtn").innerHTML = "Submit";
+		//- 		$("#nextBtn").prop("type", "submit");
+		//- });
+		//- $('#optionpool2').click(function() {
+		//- 		$('#ifYes').slideDown();
+		//- 		document.getElementById("nextBtn").innerHTML = "Next";
+		//- 		$("#nextBtn").prop("type", "button");
+		//- });
 
-		if (document.getElementById("nextBtn").innerText == "Submit") {
+		//- if (document.getElementById("nextBtn").innerText == "Submit") {
 			
-		}
+		//- }
 
-		let privatePool = document.getElementById("optionpool1");
-		if(privatePool.checked) {
+		//- let privatePool = document.getElementById("optionpool1");
+		//- if(privatePool.checked) {
 			//- document.getElementById("nextBtn").innerHTML = "Submit";
 			//- document.getElementById("regForm").submit();
 			//- return false;
-		}
+		//- }
 
 		var currentTab = 0; // Current tab is set to be the first tab (0)
 		showTab(currentTab); // Display the current tab

@@ -29,9 +29,9 @@ router.route('/home')
   });
 
 router.route('/show')
-.get((req, res) => {
-  res.render("home/views/show")
-});
+  .get((req, res) => {
+    res.render("home/views/show")
+  });
 
 router.route('/gallery')
   .get((req, res) => {
@@ -61,9 +61,17 @@ router.route('/gallery')
     });
   })
 
-router.route('/reserve')
+router.route('/reserve/private')
   .get((req, res) => {
-    res.render("home/views/reserve")
+    res.render("home/views/reserveprivate")
+  })
+  .post((req, res) => {
+    res.redirect("/home")    
+  })
+
+router.route('/reserve/public')
+  .get((req, res) => {
+    res.render("home/views/reservepublic")
   })
   .post((req, res) => {
     res.redirect("/home")    

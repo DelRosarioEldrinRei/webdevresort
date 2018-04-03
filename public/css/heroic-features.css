@@ -33,7 +33,7 @@ body {
 }
 
 .navbar-light {
-  background-color: #e3f2fd;
+  background-image: linear-gradient(to right bottom, rgba(109, 177, 241, 0.4), rgba(86, 67, 250, 0.40)), url(/img/full_logo.jpg);
 }
 
 .full_logo {
@@ -95,4 +95,37 @@ button:hover {
 
 .tab {
   display: none
+}
+
+.img-on-modal {
+  height: 20rem;
+  width: 15rem;
+  filter:brightness(100%);
+  transition: all .4s;
+  position: relative;
+}
+
+.text-on-modal-first {
+  position: absolute;
+  top: 45%;
+  right: 63%;
+  color: #2f46ca;
+  font-size: 2rem
+}
+
+ .text-on-modal-first:link .text-on-modal-first:visited {
+  color: #2f46ca;
+
+}
+
+.text-on-modal-second {
+  position: absolute;
+  top: 45%;
+  right: 13%;
+  font-size: 2rem;
+}
+
+.img-on-modal:hover {
+  /* opacity: 0.75; */
+  filter:brightness(55%);
 }
