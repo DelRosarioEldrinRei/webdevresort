@@ -1,6 +1,6 @@
 extends ../../../templates/master
 block prepend main
-	.container
+	center.mx-3
 		h1.my-4.text-center.text-lg-left Thumbnail Gallery
 			button.btn.btn-primary.btn-lg.float-lg-right.float-sm-center(data-toggle="modal" data-target="#exampleModal") Add Photo 
 			#exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
@@ -15,13 +15,19 @@ block prepend main
 								.form-group
 									label(for='exampleFormControlFile1') Choose files
 									input#exampleFormControlFile1.form-control-file(type='file' name="strImage" accept="image/*")
+								.form-group
+									label(for='exampleFormControlFile1') Choose files
+									input#exampleFormControlFile1.form-control-file(type='file' name="strImage" accept="image/*")
+								.form-group
+									label(for='exampleFormControlFile1') Choose files
+									input#exampleFormControlFile1.form-control-file(type='file' name="strImage" accept="image/*")
 
+							.modal-footer
 								button.btn.btn-primary(type='submit') Upload
-						.modal-footer
-							button.btn.btn-secondary(type='button', data-dismiss='modal') Cancel
+								button.btn.btn-secondary(type='button', data-dismiss='modal') Cancel
 
 		.row.text-center.text-lg-left
 			each image in images
-				.col-lg-3.col-md-4.col-sm-6
+				.col-lg-4.col-md-4.col-sm-6
 					a.d-block.mb-4(href='#')
 						img.img-fluid.img-thumbnail.min-height(src=`/img/uploads/${image.strImage}`, alt='')

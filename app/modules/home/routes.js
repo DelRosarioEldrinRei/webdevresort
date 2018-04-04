@@ -29,19 +29,19 @@ router.route('/')
 
 router.route('/home')
   .get((req, res) => {
-    res.render("home/views/index")
+    var db = require('../../lib/database')();
+    var queryString =`SELECT strImage FROM tbl_gallery ORDER BY strImage DESC LIMIT 4`
+    db.query(queryString, (err, results, fields)=>{
+      console.log(results)
+    res.render("home/views/index", {images:results})
   });
-
-router.route('/show')
-  .get((req, res) => {
-    res.render("home/views/show")
-  });
+});
 
 router.route('/gallery')
   .get((req, res) => {
     var db = require('../../lib/database')();
     // const queryString = 'SELECT strImage FROM tbl_gallery ORDER BY DESC';
-    db.query('SELECT strImage FROM tbl_gallery', function (err, results, fields) {
+    db.query('SELECT strImage FROM tbl_gallery ORDER BY strImage DESC', function (err, results, fields) {
       if (err) return res.send(err);
       render(results);
   });
@@ -61,7 +61,7 @@ router.route('/gallery')
     db.query(queryString,[req.body.strImage], function (err, results, field) {
          if (err) return res.send(err);
          req.session.user.strImage = req.body.strImage;
-         res.redirect('/home');
+         res.redirect('/gallery');
     });
   })
 
@@ -192,7 +192,12 @@ router.route('/reserve/public')
   
 router.route('/admin/verification')
   .get((req, res) => {
-    res.render("home/views/verification")
+    var db = require('../../lib/database')();
+    var queryString =`SELECT intReserveID, strFirstname, strLastname, datDate, tbl_reserve.booStatus FROM tbl_reserve JOIN tbl_accounts ON tbl_reserve.intReserveAccountID = tbl_accounts.intAccountsID ORDER BY booStatus asc, datDate asc;`
+    db.query(queryString, (err, results, fields)=>{
+      console.log(results)
+    res.render("home/views/verification", {custInfo:results})
+    });
   });
 
 /**
