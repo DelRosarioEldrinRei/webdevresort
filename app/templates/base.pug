@@ -14,6 +14,46 @@ html(lang='en')
 		block body
 	script(src='/js/jquery.min.js')
 	script(src='/js/moment.min.js')
+	script(src="/js/sweetalert2.all.min.js")
 	script(src='/js/tempusdominus-bootstrap-4.min.js')
 	script(src='/js/bootstrap.bundle.js')
 	block addjs
+		script.
+			$(".btn-confirm").click(()=> {
+				swal({
+					title: 'Are you sure?',
+					text: "Confirm the customer to be paid",
+					type: 'info',
+					showCancelButton: true,
+					confirmButtonColor: '#28a745',
+					cancelButtonColor: '#d33',
+					confirmButtonText: "Yes I'm Sure" 
+				}).then((result) => {
+					if (result.value) {
+						swal(
+							'Success!',
+							'Customer has payment has been approved',
+							'success'
+						)
+					}
+				})
+			});
+			$(".btn-delete").click(()=> {
+				swal({
+					title: 'Are you sure?',
+					text: "You won't be able to revert this!",
+					type: 'warning',
+					showCancelButton: true,
+					cancelButtonColor: '#d33',
+					confirmButtonColor: '#28a745',
+					confirmButtonText: 'Confirm'
+				}).then((result) => {
+					if (result.value) {
+						swal(
+							'Success!',
+							'Reservation has been cancelled',
+							'success'
+						)
+					}
+				})
+			});
