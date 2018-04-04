@@ -4,6 +4,10 @@ var authMiddleware = require('../auth/middlewares/auth');
 var multer  = require('multer');
 
 router.use(authMiddleware.hasAuth);
+router.use(function(req, res, next) {
+  res.locals.currentUser = req.session.user;
+  next();
+});
 
 var storage = multer.diskStorage({
   destination: function (req, file, cb) {
@@ -185,6 +189,11 @@ router.route('/reserve/public')
       console.log(req.session.user)
   });    
   })
+  
+router.route('/admin/verification')
+  .get((req, res) => {
+    res.render("home/views/verification")
+  });
 
 /**
  * Here we just export said router on the 'index' property of this module.

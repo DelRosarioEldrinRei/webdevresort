@@ -1,0 +1,25 @@
+extends ../../../templates/master
+
+block main
+	h1.m-3 Verify Customer Reservation
+	center.mx-3
+		table.table.table-striped.table-bordered.w-100
+			caption Verify Reservation of Customers
+			thead.table-primary
+				tr.text-center
+					th(scope='col') #
+					th(scope='col') First
+					th(scope='col') Last
+					th(scope='col') Handle
+					th(scope='col') Actions
+			tbody
+				tr.text-center
+					th(scope='row') 1
+					td Mark
+					td Otto
+					td @mdo
+					td
+						a.h3.text-success.btn-confirm(href="#")
+							i.fa.fa-check-square(aria-hidden='true')
+						a.h3.text-danger.ml-1.btn-delete(href="#")
+							i.fa.fa-window-close(aria-hidden='true')
