@@ -190,13 +190,23 @@ router.route('/reserve/public')
   });    
   })
   
-router.route('/admin/verification')
+router.route('/admin/verifypending')
   .get((req, res) => {
     var db = require('../../lib/database')();
-    var queryString =`SELECT intReserveID, strFirstname, strLastname, datDate, tbl_reserve.booStatus FROM tbl_reserve JOIN tbl_accounts ON tbl_reserve.intReserveAccountID = tbl_accounts.intAccountsID ORDER BY booStatus asc, datDate asc;`
+    var queryString =`SELECT intReserveID, strFirstname, strLastname, datDate, tbl_reserve.booStatus FROM tbl_reserve JOIN tbl_accounts ON tbl_reserve.intReserveAccountID = tbl_accounts.intAccountsID WHERE booStatus = 0 ORDER BY datDate asc ;`
     db.query(queryString, (err, results, fields)=>{
       console.log(results)
-    res.render("home/views/verification", {custInfo:results})
+    res.render("home/views/verificationpending", {custInfo:results})
+    });
+  });
+  
+router.route('/admin/verifyfinished')
+  .get((req, res) => {
+    var db = require('../../lib/database')();
+    var queryString =`SELECT intReserveID, strFirstname, strLastname, datDate, tbl_reserve.booStatus FROM tbl_reserve JOIN tbl_accounts ON tbl_reserve.intReserveAccountID = tbl_accounts.intAccountsID WHERE booStatus = 1 ORDER BY booStatus asc, datDate asc;`
+    db.query(queryString, (err, results, fields)=>{
+      console.log(results)
+    res.render("home/views/verificationfinished", {custInfo:results})
     });
   });
 
