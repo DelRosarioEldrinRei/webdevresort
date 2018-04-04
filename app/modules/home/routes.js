@@ -71,8 +71,9 @@ router.route('/reserve/private')
     var user = req.body;
     var date = req.body.datDate;
     console.log(req.file);
+    console.log(date)
     const queryString = `INSERT INTO tbl_reserve (intReserveAccountID, datDate) VALUES (?,?)`
-    db.query(queryString ,[req.session.user.intAccountsID, req.body.date ] , (err, results, fields) => {
+    db.query(queryString ,[req.session.user.intAccountsID, date ] , (err, results, fields) => {
       console.log("hello");   
       if(err) return console.log(err); 
       delete user.password;
