@@ -36,13 +36,13 @@ block main
 							.row.mt-3
 								.col-md-6.text-center
 									h3.d-inline Adult &nbsp;
-									select#adult
+									select(name='adult')
 										- var i = 0
 										while i <= 50
 											option=i++
 								.col-md-6.text-center
 									h3.d-inline Child &nbsp;
-									select#child
+									select(name='child')
 										- var i = 0
 										while i <= 50
 											option=i++
@@ -57,7 +57,7 @@ block main
 											p.card-text
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
-											select#basic
+											select(name='basic')
 												- var i = 0
 												while i <= 5
 													option=i++
@@ -69,7 +69,7 @@ block main
 											p.card-text
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
-											select#medium
+											select(name='medium')
 												- var i = 0
 												while i <= 5
 													option=i++
@@ -81,7 +81,7 @@ block main
 											p.card-text
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
-											select#premium
+											select(name='premium')
 												- var i = 0
 												while i <= 5
 													option=i++
@@ -97,7 +97,7 @@ block main
 											p.card-text
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
-											select#rBasic
+											select(name='rBasic')
 												- var i = 0
 												while i <= 5
 													option=i++
@@ -109,7 +109,7 @@ block main
 											p.card-text
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
-											select#rMedium
+											select(name='rMedium')
 												- var i = 0
 												while i <= 5
 													option=i++
@@ -121,7 +121,7 @@ block main
 											p.card-text
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
-											select#rPremium
+											select(name='rPremium')
 												- var i = 0
 												while i <= 5
 													option=i++

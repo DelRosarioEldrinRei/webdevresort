@@ -101,72 +101,81 @@ router.route('/reserve/public')
     var boopremium = 3;
     var child = req.body.child;
     var basic = req.body.basic;
-    var medium = req.body.meduim;
-    var premium = req.body.premuim;
-    var rbasic = req.body.basic;
-    var rmedium = req.body.meduim;
-    var rpremium = req.body.premuim;
+    var medium = req.body.medium;
+    var premium = req.body.premium;
+    var rbasic = req.body.rBasic;
+    var rmedium = req.body.rMedium;
+    var rpremium = req.body.rPremium;
     console.log(req.file);
     console.log(date);
     console.log(time);
     const queryString = `INSERT INTO tbl_reserve (intReserveAccountID, datDate, booTime) VALUES (?,?,?)`
     db.query(queryString ,[req.session.user.intAccountsID, date, time] , (err, results, fields) => {
+      var reservekey = req.session.user.intAccountsID;
       console.log("hello");   
       if(err) return console.log(err);
-    
+    })
+    console.log("aaaaaaaa");
+    db.query(`SELECT * FROM tbl_reserve WHERE intReserveAccountID="${req.session.user.intAccountsID}" ORDER BY intReserveID DESC LIMIT 1`, (err, results, fields) => {
+      if (err) throw err;
+      if (results.length === 0) return
+
+      var user = results[0];
+      var reservekey = user.intReserveID;
+      console.log(reservekey);
     if(adult > 0){
       const queryString = `INSERT INTO tbl_reserve_ticket (intRTReserveID, intTicketID, intQTY ) VALUES (?,?,?)`
-      db.query(queryString ,[req.session.user.intReserveID, booadult, adult] , (err, results, fields) => {
+      db.query(queryString ,[reservekey, booadult, adult] , (err, results, fields) => {
       console.log("Ticket");   
       if(err) return console.log(err);
       })
     }
     if(child > 0){
       const queryString = `INSERT INTO tbl_reserve_ticket (intRTReserveID, intTicketID, intQTY ) VALUES (?,?,?)`
-      db.query(queryString ,[req.session.user.intReserveID, boochild, child] , (err, results, fields) => {
+      db.query(queryString ,[reservekey, boochild, child] , (err, results, fields) => {
       console.log("Ticket");   
       if(err) return console.log(err);
       })
     }
     if(basic > 0){
-      const queryString = `INSERT INTO tbl_reserve_Cottage (intRSReserve, intRoomID, intQTY) VALUES (?,?,?)`
-      db.query(queryString ,[req.session.user.intReserveID, boobasic, rbasic] , (err, results, fields) => {
+      const queryString = `INSERT INTO tbl_reserve_Cottage (intRCReserveID, intRCCottageID, intQTY) VALUES (?,?,?)`
+      db.query(queryString ,[reservekey, boobasic, basic] , (err, results, fields) => {
       console.log("cottage");   
       if(err) return console.log(err);
       })
     }
     if(medium > 0){
-      const queryString = `INSERT INTO tbl_reserve_Cottage (intRSReserve, intRoomID, intQTY) VALUES (?,?,?)`
-      db.query(queryString ,[req.session.user.intReserveID, boomedium, rmedium] , (err, results, fields) => {
+      const queryString = `INSERT INTO tbl_reserve_Cottage (intRCReserveID, intRCCottageID, intQTY) VALUES (?,?,?)`
+      db.query(queryString ,[reservekey, boomedium, medium] , (err, results, fields) => {
       console.log("cottage");   
       if(err) return console.log(err);
       })
     }
     if(premium > 0){
-      const queryString = `INSERT INTO tbl_reserve_Cottage (intRSReserve, intRoomID, intQTY) VALUES (?,?,?)`
-      db.query(queryString ,[req.session.user.intReserveID, boopremium, rpremium] , (err, results, fields) => {
+      const queryString = `INSERT INTO tbl_reserve_Cottage (intRCReserveID, intRCCottageID, intQTY) VALUES (?,?,?)`
+      db.query(queryString ,[reservekey, boopremium, premium] , (err, results, fields) => {
       console.log("cottage");   
       if(err) return console.log(err);
       })
     }
     
     if(rbasic > 0){
-      const queryString = `INSERT INTO tbl_reserve_Cottage (intRSReserve, intRoomID, intQTY) VALUES (?,?,?)`
-      db.query(queryString ,[req.session.user.intReserveID, boobasic, rbasic] , (err, results, fields) => {
+      const queryString = `INSERT INTO tbl_reserve_rooms (intRSReserveID, intRSRoomID, intQTY) VALUES (?,?,?)`
+      db.query(queryString ,[reservekey, boobasic, rbasic] , (err, results, fields) => {
       console.log("cottage");   
       if(err) return console.log(err);
       })
     }
     if(rmedium > 0){
-      const queryString = `INSERT INTO tbl_reserve_Cottage (intRSReserve, intRoomID, intQTY) VALUES (?,?,?)`
-      db.query(queryString ,[req.session.user.intReserveID, boomedium, rmedium] , (err, results, fields) => {
+      const queryString = `INSERT INTO tbl_reserve_rooms (intRSReserveID, intRSRoomID, intQTY) VALUES (?,?,?)`
+      db.query(queryString ,[reservekey, boomedium, rmedium] , (err, results, fields) => {
       console.log("cottage");   
       if(err) return console.log(err);
       })
     }
     if(rpremium > 0){
-      const queryString = `INSERT INTO tbl_reserve_Cottage (intRSReserve, intRoomID, intQTY) VALUES (?,?,?)`
-      db.query(queryString ,[req.session.user.intReserveID, boopremiumr, premium] , (err, results, fields) => {
+      const queryString = `INSERT INTO tbl_reserve_rooms (intRSReserveID, intRSRoomID, intQTY) VALUES (?,?,?)`
+      db.query(queryString ,[reservekey, boopremiumr, rpremium] , (err, results, fields) => {
       console.log("cottage");   
       if(err) return console.log(err);
       })
