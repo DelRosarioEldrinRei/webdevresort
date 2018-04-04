@@ -13,7 +13,7 @@ block main
 								.col-sm-6.pl-0
 									.form-group
 										#datetimepicker4.input-group.date(data-target-input='nearest')
-											input.form-control.datetimepicker-input.mt-4(type='text', data-target='#datetimepicker4' placeholder="Input Date")
+											input.form-control.datetimepicker-input.mt-4(id='datetimepicker1',type='text', data-target='#datetimepicker1', name='datDate',placeholder="Input Date")
 											.input-group-append.mt-4(data-target='#datetimepicker4', data-toggle='datetimepicker')
 												.input-group-text
 													i.fa.fa-calendar(aria-hidden='true')
@@ -24,11 +24,11 @@ block main
 										.row
 											.col-sm-6.p-0
 												label.btn.btn-primary.btn-block
-													input#optionday1(type='radio', name='optionday', autocomplete='off')
+													input#optionday1(value='1',type='radio', name='optionday', autocomplete='off')
 													|  Day
 											.col-sm-6.p-0
 												label.btn.btn-primary.ml-1.btn-block
-													input#optionday2(type='radio', name='optionday', autocomplete='off')
+													input#optionday2(value='2',type='radio', name='optionday', autocomplete='off')
 													|  Night
 						.tab.container
 							.row
@@ -36,13 +36,13 @@ block main
 							.row.mt-3
 								.col-md-6.text-center
 									h3.d-inline Adult &nbsp;
-									select
+									select#adult
 										- var i = 0
 										while i <= 50
 											option=i++
 								.col-md-6.text-center
 									h3.d-inline Child &nbsp;
-									select
+									select#child
 										- var i = 0
 										while i <= 50
 											option=i++
@@ -57,7 +57,7 @@ block main
 											p.card-text
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
-											select
+											select#basic
 												- var i = 0
 												while i <= 5
 													option=i++
@@ -69,7 +69,7 @@ block main
 											p.card-text
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
-											select
+											select#medium
 												- var i = 0
 												while i <= 5
 													option=i++
@@ -81,7 +81,7 @@ block main
 											p.card-text
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
-											select
+											select#premium
 												- var i = 0
 												while i <= 5
 													option=i++
@@ -97,7 +97,7 @@ block main
 											p.card-text
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
-											select
+											select#rBasic
 												- var i = 0
 												while i <= 5
 													option=i++
@@ -109,7 +109,7 @@ block main
 											p.card-text
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
-											select
+											select#rMedium
 												- var i = 0
 												while i <= 5
 													option=i++
@@ -121,7 +121,7 @@ block main
 											p.card-text
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
-											select
+											select#rPremium
 												- var i = 0
 												while i <= 5
 													option=i++
@@ -137,7 +137,7 @@ block addjs
 		let start = moment().add(7, 'days').calendar();
 		$(function () {
 			$('#datetimepicker4').datetimepicker({
-				format: 'L',
+				format: 'YYYY-MM-DD',
 				minDate: start
 			});
 		});

@@ -73,14 +73,12 @@ router.route('/reserve/private')
     console.log(req.file);
     console.log(date)
     const queryString = `INSERT INTO tbl_reserve (intReserveAccountID, datDate) VALUES (?,?)`
-    db.query(queryString ,[req.session.user.intAccountsID, date ] , (err, results, fields) => {
+    db.query(queryString ,[req.session.user.intAccountsID, date] , (err, results, fields) => {
       console.log("hello");   
       if(err) return console.log(err); 
       delete user.password;
-
       req.session.user = user;
       console.log(req.session.user)
-      return res.redirect('/login');
   });    
   })
 
@@ -89,7 +87,94 @@ router.route('/reserve/public')
     res.render("home/views/reservepublic")
   })
   .post((req, res) => {
-    res.redirect("/home")    
+    res.redirect("/home")
+    var db = require('../../lib/database')();
+    var user = req.body;
+    var date = req.body.datDate;
+    var time = req.body.optiontime1;
+    var time2 = req.body.optiontime2;
+    var adult = req.body.adult;
+    var booadult = 1;
+    var boochild = 2;
+    var boobasic = 1;
+    var boomedium = 2;
+    var boopremium = 3;
+    var child = req.body.child;
+    var basic = req.body.basic;
+    var medium = req.body.meduim;
+    var premium = req.body.premuim;
+    var rbasic = req.body.basic;
+    var rmedium = req.body.meduim;
+    var rpremium = req.body.premuim;
+    console.log(req.file);
+    console.log(date);
+    console.log(time);
+    const queryString = `INSERT INTO tbl_reserve (intReserveAccountID, datDate, booTime) VALUES (?,?,?)`
+    db.query(queryString ,[req.session.user.intAccountsID, date, time] , (err, results, fields) => {
+      console.log("hello");   
+      if(err) return console.log(err);
+    
+    if(adult > 0){
+      const queryString = `INSERT INTO tbl_reserve_ticket (intRTReserveID, intTicketID, intQTY ) VALUES (?,?,?)`
+      db.query(queryString ,[req.session.user.intReserveID, booadult, adult] , (err, results, fields) => {
+      console.log("Ticket");   
+      if(err) return console.log(err);
+      })
+    }
+    if(child > 0){
+      const queryString = `INSERT INTO tbl_reserve_ticket (intRTReserveID, intTicketID, intQTY ) VALUES (?,?,?)`
+      db.query(queryString ,[req.session.user.intReserveID, boochild, child] , (err, results, fields) => {
+      console.log("Ticket");   
+      if(err) return console.log(err);
+      })
+    }
+    if(basic > 0){
+      const queryString = `INSERT INTO tbl_reserve_Cottage (intRSReserve, intRoomID, intQTY) VALUES (?,?,?)`
+      db.query(queryString ,[req.session.user.intReserveID, boobasic, rbasic] , (err, results, fields) => {
+      console.log("cottage");   
+      if(err) return console.log(err);
+      })
+    }
+    if(medium > 0){
+      const queryString = `INSERT INTO tbl_reserve_Cottage (intRSReserve, intRoomID, intQTY) VALUES (?,?,?)`
+      db.query(queryString ,[req.session.user.intReserveID, boomedium, rmedium] , (err, results, fields) => {
+      console.log("cottage");   
+      if(err) return console.log(err);
+      })
+    }
+    if(premium > 0){
+      const queryString = `INSERT INTO tbl_reserve_Cottage (intRSReserve, intRoomID, intQTY) VALUES (?,?,?)`
+      db.query(queryString ,[req.session.user.intReserveID, boopremium, rpremium] , (err, results, fields) => {
+      console.log("cottage");   
+      if(err) return console.log(err);
+      })
+    }
+    
+    if(rbasic > 0){
+      const queryString = `INSERT INTO tbl_reserve_Cottage (intRSReserve, intRoomID, intQTY) VALUES (?,?,?)`
+      db.query(queryString ,[req.session.user.intReserveID, boobasic, rbasic] , (err, results, fields) => {
+      console.log("cottage");   
+      if(err) return console.log(err);
+      })
+    }
+    if(rmedium > 0){
+      const queryString = `INSERT INTO tbl_reserve_Cottage (intRSReserve, intRoomID, intQTY) VALUES (?,?,?)`
+      db.query(queryString ,[req.session.user.intReserveID, boomedium, rmedium] , (err, results, fields) => {
+      console.log("cottage");   
+      if(err) return console.log(err);
+      })
+    }
+    if(rpremium > 0){
+      const queryString = `INSERT INTO tbl_reserve_Cottage (intRSReserve, intRoomID, intQTY) VALUES (?,?,?)`
+      db.query(queryString ,[req.session.user.intReserveID, boopremiumr, premium] , (err, results, fields) => {
+      console.log("cottage");   
+      if(err) return console.log(err);
+      })
+    }
+      delete user.password;
+      req.session.user = user;
+      console.log(req.session.user)
+  });    
   })
 
 /**
