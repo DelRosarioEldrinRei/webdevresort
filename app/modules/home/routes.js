@@ -86,6 +86,7 @@ router.route('/reserve/private')
   });    
   })
 
+
 router.route('/reserve/public')
   .get((req, res) => {
     res.render("home/views/reservepublic")
@@ -199,6 +200,19 @@ router.route('/admin/verifypending')
     res.render("home/views/verificationpending", {custInfo:results})
     });
   });
+router.route('/admin/verifypending/:intReserveID')
+  .get((req, res) => {
+    console.log("aaaaaaaaaaaaaaaaaa")
+  var db = require('../../lib/database')(); 
+  const queryString = `UPDATE tbl_reserve SET        
+  booStatus = 1
+  WHERE intReserveID= ${req.params.intReserveID}`;
+
+  db.query(queryString, [req.body.booStatus], (err, results, fields) => {        
+      if (err) throw err;
+      res.redirect('/admin/verifypending');
+  }); 
+}); 
   
 router.route('/admin/verifyfinished')
   .get((req, res) => {

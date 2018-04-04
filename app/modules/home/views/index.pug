@@ -27,6 +27,6 @@ block prepend main
 			.row.mt-5
 				each image in images
 					.col-md-3.col-sm-6.mb-2
-						a(href='#')
-							img.img-fluid(src=`/img/uploads/${image.strImage}`, alt='')
+						a(href=`/img/uploads/${image.strImage}?image=250` data-toggle="lightbox" data-max-width="900")
+							img.img-fluid(src=`/img/uploads/${image.strImage}?image=250`, alt='')
 

@@ -8,12 +8,15 @@ html(lang='en')
 		link(href='/css/bootstrap.min.css', rel='stylesheet')
 		link(href='/css/tempusdominus-bootstrap-4.min.css', rel='stylesheet')
 		link(href='/css/font-awesome.min.css', rel='stylesheet')
+		link(rel="stylesheet" href="/css/ekko-lightbox.css")
+		link(rel='icon', href='/img/logoico.ico')
 		link(href='/css/heroic-features.css', rel='stylesheet')
 
 	body
 		block body
 	script(src='/js/jquery.min.js')
 	script(src='/js/moment.min.js')
+	script(src="/js/ekko-lightbox.min.js")
 	script(src="/js/sweetalert2.all.min.js")
 	script(src='/js/tempusdominus-bootstrap-4.min.js')
 	script(src='/js/bootstrap.bundle.js')
@@ -56,4 +59,8 @@ html(lang='en')
 						)
 					}
 				})
+			});
+			$(document).on('click', '[data-toggle="lightbox"]', function(event) {
+				event.preventDefault();
+				$(this).ekkoLightbox();
 			});

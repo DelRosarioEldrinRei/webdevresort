@@ -102,7 +102,8 @@ button:hover {
 .img-on-modal {
   height: 20rem;
   width: 15rem;
-  filter:brightness(100%);
+  filter:brightness(55%);
+  -webkit-filter:brightness(55%);
   transition: all .4s;
   position: relative;
 }
@@ -111,17 +112,18 @@ button:hover {
   position: absolute;
   top: 45%;
   right: 63%;
-  color: #2f46ca;
+  color: #fff;
   font-size: 2rem
 }
 
  .text-on-modal-first:link .text-on-modal-first:visited {
-  color: #2f46ca;
+  color: #fff;
 
 }
 
 .text-on-modal-second {
   position: absolute;
+  color: #fff; 
   top: 45%;
   right: 13%;
   font-size: 2rem;
@@ -129,5 +131,10 @@ button:hover {
 
 .img-on-modal:hover {
   /* opacity: 0.75; */
-  filter:brightness(55%);
+  filter:brightness(150%);
+  /* color: #000;  */
 }
+/* 
+.img-on-modal:hover.text-on-modal-first .text-on-modal-second {
+  color: #000; 
+} */
