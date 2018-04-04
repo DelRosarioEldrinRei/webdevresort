@@ -91,8 +91,8 @@ router.route('/reserve/public')
     var db = require('../../lib/database')();
     var user = req.body;
     var date = req.body.datDate;
-    var time = req.body.optiontime1;
-    var time2 = req.body.optiontime2;
+    var time = req.body.optionday;
+    // var time2 = req.body.optiontime2;
     var adult = req.body.adult;
     var booadult = 1;
     var boochild = 2;
