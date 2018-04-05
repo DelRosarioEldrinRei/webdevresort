@@ -239,7 +239,7 @@ router.route('/admin/reports')
   });
 
     //Eldrin, para sa modal to (verify Finish).
-  router.route('/admin/reports/:intReserveID')
+  router.route('/admin/reports/:ID')
   .get(authMiddleware.isAdmin, (req, res) => {
     console.log("aaaaaaaaaaaaaaaaaa")
   var db = require('../../lib/database')(); 
@@ -252,7 +252,7 @@ router.route('/admin/reports')
     join tbl_rooms on tbl_reserve_rooms.intRSRoomID = tbl_rooms.intRoomsID 
     join tbl_cottages on tbl_reserve_cottage.intRCCottageID = tbl_cottages.intCottagesID 
     join tbl_tickets on tbl_reserve_ticket	.intTicketID = tbl_tickets.intTicketID     
-  WHERE intRSReserveID= ${req.params.intReserveID}`;
+    WHERE tbl_reserve.intReserveID =${req.params.ID}`;
   db.query(queryString, (err, results, fields) => {        
     console.log(results)  
     if (err) throw err;
