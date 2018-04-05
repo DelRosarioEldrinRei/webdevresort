@@ -212,19 +212,33 @@ router.route('/admin/verifypending/:intReserveID')
       if (err) throw err;
       res.redirect('/admin/verifypending');
   }); 
-}); 
+});
+
+router.route('/admin/verifypending/del/:intReserveID')
+  .get((req, res) => {
+    console.log("aaaaaaaaaaaaaaaaaa")
+  var db = require('../../lib/database')(); 
+  const queryString = `UPDATE tbl_reserve SET        
+  booStatus = 2
+  WHERE intReserveID= ${req.params.intReserveID}`;
+
+  db.query(queryString, [req.body.booStatus], (err, results, fields) => {        
+      if (err) throw err;
+      res.redirect('/admin/verifypending');
+  }); 
+});
   
 router.route('/admin/verifyfinished')
   .get((req, res) => {
     var db = require('../../lib/database')();
-    var queryString =`SELECT intReserveID, strFirstname, strLastname, datDate, tbl_reserve.booStatus FROM tbl_reserve JOIN tbl_accounts ON tbl_reserve.intReserveAccountID = tbl_accounts.intAccountsID WHERE booStatus = 1 ORDER BY booStatus asc, datDate asc;`
+    var queryString =`SELECT intReserveID, strFirstname, strLastname, datDate, tbl_reserve.booStatus FROM tbl_reserve JOIN tbl_accounts ON tbl_reserve.intReserveAccountID = tbl_accounts.intAccountsID WHERE booStatus = 1 ORDER BY datDate asc;`
     db.query(queryString, (err, results, fields)=>{
       console.log(results)
     res.render("home/views/verificationfinished", {custInfo:results})
     });
   });
 
-    //Eldrin, para sa modal to.
+    //Eldrin, para sa modal to (verify Finish).
   router.route('/admin/verifyfinish/:intReserveID')
   .get((req, res) => {
     console.log("aaaaaaaaaaaaaaaaaa")
@@ -234,14 +248,14 @@ router.route('/admin/verifyfinished')
   db.query(queryString, (err, results, fields) => {        
     console.log(results)  
     if (err) throw err;
-      res.redirect('/admin/verifyfinish', {custInfo:results});
+      res.redirect('/admin/verifyfinish');
     }); 
   const queryString1 = `SELECT * FROM tbl_reserve_tickets
   WHERE intRTReserveID= ${req.params.intReserveID}`;
   db.query(queryString1, (err, results, fields) => {        
     console.log(results)  
     if (err) throw err;
-      res.redirect('/admin/verifyfinish', {custInfo:results});
+      res.redirect('/admin/verifyfinish');
     }); 
 
   const queryString2 = `SELECT * FROM tbl_reserve_cottage
@@ -249,10 +263,69 @@ router.route('/admin/verifyfinished')
   db.query(queryString2, (err, results, fields) => {        
     console.log(results)  
     if (err) throw err;
-      res.redirect('/admin/verifyfinish', {custInfo:results});
+      res.redirect('/admin/verifyfinish');
+
+  }); 
+});
+//RESERVATION
+router.route('/reservation')
+  .get((req, res) =>{
+    var db = require('./../lib/database')();
+    var user = req.body
+    db.query(`SELECT * FROM tbl_reserve WHERE intReserveAccountID="${req.session.user.intAccountsID}" ORDER BY intReserveID DESC`, (err, results, fields) => {
+      if (err) throw err;
+      if (results.length === 0) return
+      var user = results[0];
+      var reservekey = user.intAccountsID;
+      console.log(reservekey);
+      res.render("home/views/reservation", {custInfo:results})
+  })
+
+router.route('/admin/verifycancel')
+  .get((req, res) => {
+    var user = req.body;
+    var db = require('../../lib/database')();
+    var queryString =`SELECT intReserveID, strFirstname, strLastname, datDate, tbl_reserve.booStatus FROM tbl_reserve JOIN tbl_accounts ON tbl_reserve.intReserveAccountID = tbl_accounts.intAccountsID WHERE booStatus = 2 ORDER BY datDate asc;`
+    db.query(queryString, (err, results, fields)=>{
+      console.log(results)
+    res.render("home/views/verificationcanceled", {custInfo:results})
+    });
+  });
+
+    //Eldrin, para sa modal (verifycancel) to.
+  router.route('/admin/verifycancel/:intReserveID')
+  .get((req, res) => {
+    console.log("aaaaaaaaaaaaaaaaaa")
+  var db = require('../../lib/database')(); 
+  const queryString = `SELECT * FROM tbl_reserve_rooms
+  WHERE intRSReserveID= ${req.params.intReserveID}`;
+  db.query(queryString, (err, results, fields) => {        
+    console.log(results)  
+    if (err) throw err;
+      res.redirect('/admin/verifycanceled');
+    }); 
+  const queryString1 = `SELECT * FROM tbl_reserve_tickets
+  WHERE intRTReserveID= ${req.params.intReserveID}`;
+  db.query(queryString1, (err, results, fields) => {        
+    console.log(results)  
+    if (err) throw err;
+      res.redirect('/admin/verifycanceled');
+    }); 
+
+  const queryString2 = `SELECT * FROM tbl_reserve_cottage
+  WHERE intRCReserveID= ${req.params.intReserveID}`;
+  db.query(queryString2, (err, results, fields) => {        
+    console.log(results)  
+    if (err) throw err;
+      res.redirect('/admin/verifycanceled');
 
   }); 
 }); 
+
+
+
+//eldrin, para to sa reservation(NAVBAR SA CLIENT SIDE)
+
 
 /**
  * Here we just export said router on the 'index' property of this module.
