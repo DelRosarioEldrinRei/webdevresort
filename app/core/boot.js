@@ -73,11 +73,12 @@ module.exports = app => {
      * link for more info: https://expressjs.com/en/guide/using-middleware.html
      */
 
+     
+
     /**
      * Use 'morgan' middleware for HTTP logging purposes
      */
     app.use(morgan('dev'));
-
     /**
      * Use the 'serve-static' middleware to catch requests for asset files and serve
      * them from the public folder. Notice the use of path.dirname()

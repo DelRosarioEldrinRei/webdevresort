@@ -10,6 +10,8 @@ block main
 							.row
 								h3.ml-4 Reserve Details
 							.row
+								p.ml-4.lead Please choose a date and time when you want to schedule your reservation. (1/3)
+							.row
 								.col-sm-6.pl-0
 									.form-group
 										#datetimepicker4.input-group.date(data-target-input='nearest')
@@ -33,6 +35,8 @@ block main
 						.tab.container
 							.row
 								h3.ml-4 Reserve Tickets
+							.row
+								p.ml-4.lead Please choose how many tickets you want to reserve and select the quantity of cottage you want to reserve below. We also have rooms that you can reserve. (2/3)
 							.row.mt-3
 								.col-md-6.text-center
 									h3.d-inline Adult &nbsp;
@@ -49,37 +53,37 @@ block main
 							.row.mt-5
 								h3.ml-4 Cottages
 							.row.mt-2
-								.col-lg-3.col-md-6.mb-4.mx-auto
+								.col-lg-4.col-md-6.mb-4.mx-auto
 									.card
-										img.card-img-top(src='http://placehold.it/500x325', alt='')
+										img.card-img-top(src='/img/umbrella.jpg', alt='')
 										.card-body
-											h4.card-title Card title
+											h4.card-title Umbrella
 											p.card-text
-												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
+												| An umbrella that can accomdate 4 persons.
 										.card-footer.text-center
 											select(name='basic')
 												- var i = 0
 												while i <= 5
 													option=i++
-								.col-lg-3.col-md-6.mb-4.mx-auto
+								.col-lg-4.col-md-6.mb-4.mx-auto
 									.card
-										img.card-img-top(src='http://placehold.it/500x325', alt='')
+										img.card-img-top(src='/img/smallcottage.jpg', alt='')
 										.card-body
-											h4.card-title Card title
+											h4.card-title Small
 											p.card-text
-												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
+												| A small cottage that can accomodate 8-10 persons.
 										.card-footer.text-center
 											select(name='medium')
 												- var i = 0
 												while i <= 5
 													option=i++
-								.col-lg-3.col-md-6.mb-4.mx-auto
+								.col-lg-4.col-md-6.mb-4.mx-auto
 									.card
-										img.card-img-top(src='http://placehold.it/500x325', alt='')
+										img.card-img-top(src='/img/bigcottage.jpg', alt='')
 										.card-body
-											h4.card-title Card title
+											h4.card-title Big
 											p.card-text
-												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
+												| A big cottage that can accomodate 10-16 persons.
 										.card-footer.text-center
 											select(name='premium')
 												- var i = 0
@@ -88,24 +92,26 @@ block main
 						.tab.container
 							.row
 								h3.ml-4 Reserve Rooms
+							.row
+								p.ml-4.lead You're almost done! select the quantity of rooms you want to reserve below. (3/3)
 							.row.mt-2
-								.col-lg-3.col-md-6.mb-4.mx-auto
+								.col-lg-4.col-md-6.mb-4.mx-auto
 									.card
-										img.card-img-top(src='http://placehold.it/500x325', alt='')
+										img.card-img-top(src='/img/smallroom.jpg', alt='')
 										.card-body
-											h4.card-title Card title
+											h4.card-title A/C Small
 											p.card-text
-												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
+												| a small cozy room that has a twin sized bed.
 										.card-footer.text-center
 											select(name='rBasic')
 												- var i = 0
 												while i <= 5
 													option=i++
-								.col-lg-3.col-md-6.mb-4.mx-auto
+								.col-lg-4.col-md-6.mb-4.mx-auto
 									.card
-										img.card-img-top(src='http://placehold.it/500x325', alt='')
+										img.card-img-top(src='/img/bigroom.jpg', alt='')
 										.card-body
-											h4.card-title Card title
+											h4.card-title A/C Big
 											p.card-text
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
@@ -113,13 +119,13 @@ block main
 												- var i = 0
 												while i <= 5
 													option=i++
-								.col-lg-3.col-md-6.mb-4.mx-auto
+								.col-lg-4.col-md-6.mb-4.mx-auto
 									.card
-										img.card-img-top(src='http://placehold.it/500x325', alt='')
+										img.card-img-top(src='/img/pavilion.jpg', alt='')
 										.card-body
-											h4.card-title Card title
+											h4.card-title Pavilion
 											p.card-text
-												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
+												|A Large spaced cottage that can accomodate 3 Families.
 										.card-footer.text-center
 											select(name='rPremium')
 												- var i = 0

@@ -15,7 +15,7 @@ landingRouter.route('/')
 
 loginRouter.route('/')
     .get(authMiddleware.noAuthed, (req, res) => {
-        res.render('auth/views/login', req.query);
+        res.render('auth/views/login',req.query);
     })
     .post((req, res) => {
         var db = require('../../lib/database')();

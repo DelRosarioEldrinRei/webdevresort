@@ -228,18 +228,18 @@ router.route('/admin/verifypending/del/:intReserveID')
   }); 
 });
   
-router.route('/admin/verifyfinished')
+router.route('/admin/reports')
   .get((req, res) => {
     var db = require('../../lib/database')();
     var queryString =`SELECT intReserveID, strFirstname, strLastname, datDate, tbl_reserve.booStatus FROM tbl_reserve JOIN tbl_accounts ON tbl_reserve.intReserveAccountID = tbl_accounts.intAccountsID WHERE booStatus = 1 ORDER BY datDate asc;`
     db.query(queryString, (err, results, fields)=>{
       console.log(results)
-    res.render("home/views/verificationfinished", {custInfo:results})
+    res.render("home/views/reports", {custInfo:results})
     });
   });
 
     //Eldrin, para sa modal to (verify Finish).
-  router.route('/admin/verifyfinish/:intReserveID')
+  router.route('/admin/reports/:intReserveID')
   .get((req, res) => {
     console.log("aaaaaaaaaaaaaaaaaa")
   var db = require('../../lib/database')(); 
@@ -256,7 +256,7 @@ router.route('/admin/verifyfinished')
   db.query(queryString, (err, results, fields) => {        
     console.log(results)  
     if (err) throw err;
-      res.redirect('/admin/verifyfinish/result');
+      res.redirect('/admin/reports/result');
     })
 });
 

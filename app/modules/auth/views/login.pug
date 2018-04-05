@@ -6,7 +6,14 @@ block body
 			background-image: linear-gradient(to right bottom, rgba(41, 152, 255, 0.40), rgba(86, 67, 250, 0.40)), url(img/slide_2.jpg);
 			background-position: center;
 		}
-		
+	- var hasIncorrect = typeof incorrect !== 'undefined' ? 'Incorrect username or password.' : ''
+	- var hasUnauthorized = typeof unauthorized !== 'undefined' ? 'You are not authorized to view the page you\'re trying to access. Please log in first.' : ''
+
+	//- if hasIncorrect || hasUnauthorized
+	//- 	.container
+	//- 		.alert.alert-danger(role='alert')
+	//- 			| #{hasIncorrect || hasUnauthorized}
+
 	figure.text-center
 		a(href="/login")
 			img.img-fluid.full_logo.shadow(src="img/full_logo.jpg", alt="")
