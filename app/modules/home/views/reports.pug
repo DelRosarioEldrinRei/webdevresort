@@ -24,5 +24,5 @@ block main
 						td.text-center #{info.strLastname}
 						td.text-center #{info.datDate.toLocaleString().split(' ')[0]}
 						td.text-center
-							a.h3.text-primary(href=`/admin/reports/${custInfo.intReserveID}`)
+							a.h3.text-primary(href=`/admin/reports/:${custInfo.intReserveID}`)
 								i.fa.fa-list-alt(aria-hidden='true')

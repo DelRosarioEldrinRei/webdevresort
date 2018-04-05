@@ -7,8 +7,12 @@ html
 		script(src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js" async)
 	body
 		#landing-header
-			h1 Welcome to Ville Martha Resort!
-			a.btn.btn-lg.btn-primary(href="/home") Reserve Now
+			h1 Welcome to Villa Martha Resort!
+			if currentUser
+				a.btn.btn-lg.btn-primary(href="/home") Come in!
+			if currentUser == undefined
+				a.btn.btn-lg.btn-primary(href="/login") Login
+				a.btn.btn-lg.btn-primary.m-1(href="/signup") Signup
 		ul.slideshow
 			li
 			li

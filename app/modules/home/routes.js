@@ -3,7 +3,6 @@ var router = express.Router();
 var authMiddleware = require('../auth/middlewares/auth');
 var multer  = require('multer');
 
-router.use(authMiddleware.hasAuth);
 router.use(function(req, res, next) {
   res.locals.currentUser = req.session.user;
   next();
@@ -26,6 +25,8 @@ router.route('/')
   .get((req, res) => {
     res.render("home/views/landing")
   });
+
+router.use(authMiddleware.hasAuth);
 
 router.route('/home')
   .get((req, res) => {
@@ -66,7 +67,7 @@ router.route('/gallery')
   })
 
 router.route('/reserve/private')
-  .get((req, res) => {
+  .get(authMiddleware.noAuthedAdmin, (req, res) => {
     res.render("home/views/reserveprivate")
   })
   .post((req, res) => {
@@ -88,10 +89,10 @@ router.route('/reserve/private')
 
 
 router.route('/reserve/public')
-  .get((req, res) => {
+  .get(authMiddleware.noAuthedAdmin, (req, res) => {
     res.render("home/views/reservepublic")
   })
-  .post((req, res) => {
+  .post(authMiddleware.noAuthedAdmin, (req, res) => {
     res.redirect("/home")
     var db = require('../../lib/database')();
     var user = req.body;
@@ -256,14 +257,14 @@ router.route('/admin/reports')
   db.query(queryString, (err, results, fields) => {        
     console.log(results)  
     if (err) throw err;
-      res.redirect('/admin/reportsresults');
+      res.redirect('/admin/reportsresults', {custInfo:results});
     })
 });
 
 
 
 
-//RESERVATION
+// RESERVATION
 // router.route('/reservation')
 //   .get((req, res) =>{
 //     var db = require('./../lib/database')();
@@ -326,4 +327,10 @@ router.route('/admin/reports')
 /**
  * Here we just export said router on the 'index' property of this module.
  */
+
+router.route('/*')
+  .get((req, res) => {
+    res.redirect("/home")
+  });
+
 exports.index = router;

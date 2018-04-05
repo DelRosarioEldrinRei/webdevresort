@@ -16,14 +16,16 @@ block body
 
 	figure.text-center
 		a(href="/login")
-			img.img-fluid.full_logo.shadow(src="img/full_logo.jpg", alt="")
+			img.img-fluid.full_logo.shadow-logo(src="img/full_logo.jpg", alt="")
 	.container
 		.row
 			.col-sm-5.mx-auto
 				.card.m-3
-					.card-body.shadow
+					.card-body.shadow-logo
 						.container
-							h3 Login
+							h3
+								i.fa.fa-user(aria-hidden='true')
+								| Login
 							form(method="POST" action="/login")
 								.form-group
 									label(for='exampleInputEmail1') Email address:
@@ -37,5 +39,7 @@ block body
 								.text-center.mt-2
 									| Dont have an account? 
 									a(href="/signup") Create one
-									iframe(src='https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fvillamartharesort.herokuapp.com&layout=button_count&size=small&mobile_iframe=true&width=69&height=20&appId', width='69', height='20', style='border:none;overflow:hidden', scrolling='no', frameborder='0', allowtransparency='true')
+								center
+									iframe(src='https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fvillamartharesort.herokuapp.com&layout=button_count&size=large&mobile_iframe=true&width=84&height=28&appId', width='84', height='28', style='border:none;overflow:hidden', scrolling='no', frameborder='0', allowtransparency='true')
+
 

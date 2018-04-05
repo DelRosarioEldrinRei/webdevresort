@@ -4,6 +4,8 @@ block prepend main
 		h1.my-4.text-center.text-lg-left Thumbnail Gallery
 			if currentUser.isAdmin
 				button.btn.btn-primary.btn-lg.float-lg-right.float-sm-center(data-toggle="modal" data-target="#exampleModal") Add Photo 
+			.row
+				p.ml-4.lead The Gallery of our resort which you can be featured!
 			#exampleModal.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
 				.modal-dialog(role='document')
 					.modal-content
@@ -25,4 +27,4 @@ block prepend main
 			each image in images
 				.col-lg-4.col-md-4.col-sm-6
 					a.d-block.mb-4(href=`/img/uploads/${image.strImage}?image=250` data-toggle="lightbox" data-max-width="900")
-						img.img-fluid.img-thumbnail.min-height(src=`/img/uploads/${image.strImage}?image=250`, alt='')
+						img.shadow.img-fluid.img-thumbnail.min-height(src=`/img/uploads/${image.strImage}?image=250`, alt='')

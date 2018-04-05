@@ -14,16 +14,19 @@ block main
 									thead.table-primary
 										tr.text-center
 											th(scope='col') #
-											th(scope='col') First
-											th(scope='col') Last
-											th(scope='col') Date
-											th(scope='col') Actions
+											th(scope='col') Room Desc
+											th(scope='col') QTY
+											th(scope='col') Cottage Desc
+											th(scope='col') QTY
+											th(scope='col') Tickets Desc
+											th(scope='col') QTY
 									tbody
 										tr
 											th.text-center(scope='row')
-											td.text-center a 
-											td.text-center a
-											td.text-center a
-											td.text-center a
-												//- a.h3.text-primary(href=`/admin/reports/${custInfo.intReserveID}`)
-												//- 	i.fa.fa-list-alt(aria-hidden='true')
+											td.text-center #{custInfo.intReserveID}
+											td.text-center #{custInfo.tbl_rooms.strDetails}
+											td.text-center #{custInfo.tbl_reserve_rooms.intQTY}
+											td.text-center #{custInfo.tbl_cottages.strDescription}
+											td.text-center #{custInfo.tbl_reserve_cottage.intQTY}
+											td.text-center #{custInfo.tbl_tickets.strDesc}
+											td.text-center #{custInfo.tbl_reserve_ticket.intQTY}

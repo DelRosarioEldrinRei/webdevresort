@@ -14,9 +14,11 @@ block body
 		.row
 			.col-sm-5.mx-auto
 				.card.m-3
-					.card-body.shadow
+					.card-body.shadow-logo
 						.container
-							h3 Signup
+							h3
+								i.fa.fa-user-o(aria-hidden='true')
+								| Signup
 							form(method="POST" action=`/signup${user ? `/${user.id}?_method=PUT` : ''}`)
 								.form-group
 									label(for='exampleInputEmail1') First Name:
@@ -30,7 +32,7 @@ block body
 									small#emailHelp.form-text.text-muted We'll never share your email with anyone else.
 								.form-group
 									label(for='exampleInputPassword1') Password:
-									input#exampleInputPassword1.form-control(type='password', name="password" placeholder='Password' important)
+									input#exampleInputPassword1.form-control(type='password', name="password" placeholder='Password' pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" important)
 								button.btn.btn-primary.btn-block(type='submit') Register
 								a(href="/login").text-left.mt-2.ml-2
 									| Go Back

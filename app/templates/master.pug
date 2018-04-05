@@ -14,20 +14,31 @@ block prepend body
 					ul.navbar-nav.ml-auto
 						li.nav-item.active
 							a.nav-link(href='/home')
-								| Home
+								i.fa.fa-home(aria-hidden='true')
+								|  Home
 								span.sr-only (current)
 						if !currentUser.isAdmin
 							li.nav-item
-								a.nav-link(href='/reservation') Reservation
+								a.nav-link(href='/reservation')
+									i.fa.fa-book(aria-hidden='true')
+									| Reservation
 						if currentUser.isAdmin
 							li.nav-item
-								a.nav-link(href='/admin/verifypending') Verification
+								a.nav-link(href='/admin/verifypending')
+									i.fa.fa-check(aria-hidden='true')
+									|  Verification
 							li.nav-item
-								a.nav-link(href='/admin/reports') Reports
+								a.nav-link(href='/admin/reports')
+									i.fa.fa-file(aria-hidden='true')
+									|  Reports
 						li.nav-item
-							a.nav-link(href='/gallery') Gallery
+							a.nav-link(href='/gallery')
+								i.fa.fa-picture-o(aria-hidden='true')
+								|  Gallery
 						li.nav-item
-							a.nav-link(href='/logout') Logout
+							a.nav-link(href='/logout')
+								i.fa.fa-sign-out(aria-hidden='true')
+								|  Logout
 
 	block main
 

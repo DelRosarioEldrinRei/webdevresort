@@ -8,44 +8,46 @@ block main
 					form(method="POST" action="/reserve/public")#regForm
 						.tab.container
 							.row
-								h3.ml-4 Reserve Details
+								h3.ml-4.mt-3 Reserve Details
 							.row
 								p.ml-4.lead Please choose a date and time when you want to schedule your reservation. (1/3)
 							.row
 								.col-sm-6.pl-0
 									.form-group
 										#datetimepicker4.input-group.date(data-target-input='nearest')
-											input.form-control.datetimepicker-input.mt-4(id='datetimepicker1',type='text', data-target='#datetimepicker1', name='datDate',placeholder="Input Date")
+											input.form-control.datetimepicker-input.mt-4(id='datetimepicker1',type='text', data-target='#datetimepicker1', name='datDate',placeholder="Input Date" required)
 											.input-group-append.mt-4(data-target='#datetimepicker4', data-toggle='datetimepicker')
 												.input-group-text
 													i.fa.fa-calendar(aria-hidden='true')
 							.form-group#ifYes
 								.row
-									label Choose Time:
+									label.mt-3 Choose Time:
 									.col-sm-12.p-0
 										.row
 											.col-sm-6.p-0
 												label.btn.btn-primary.btn-block
-													input#optionday1(value='1',type='radio', name='optionday', autocomplete='off')
+													input#optionday1(value='1',type='radio', name='optionday', autocomplete='off' checked)
 													|  Day
-											.col-sm-6.p-0
+											.col-sm-6.p-0.mb-5
 												label.btn.btn-primary.ml-1.btn-block
 													input#optionday2(value='0',type='radio', name='optionday', autocomplete='off')
 													|  Night
 						.tab.container
 							.row
-								h3.ml-4 Reserve Tickets
+								h3.ml-4.mt-3 Reserve Tickets
 							.row
 								p.ml-4.lead Please choose how many tickets you want to reserve and select the quantity of cottage you want to reserve below. We also have rooms that you can reserve. (2/3)
 							.row.mt-3
 								.col-md-6.text-center
 									h3.d-inline Adult &nbsp;
+									.text-secondary Day: ₱100 Night: ₱150
 									select(name='adult')
 										- var i = 0
 										while i <= 50
 											option=i++
 								.col-md-6.text-center
 									h3.d-inline Child &nbsp;
+									.text-secondary Day: ₱80 Night: ₱120
 									select(name='child')
 										- var i = 0
 										while i <= 50
@@ -54,10 +56,11 @@ block main
 								h3.ml-4 Cottages
 							.row.mt-2
 								.col-lg-4.col-md-6.mb-4.mx-auto
-									.card
+									.card.shadow
 										img.card-img-top(src='/img/umbrella.jpg', alt='')
 										.card-body
-											h4.card-title Umbrella
+											h4.card-title Umbrella 
+												.text-secondary.float-right ₱400.00
 											p.card-text
 												| An umbrella that can accomdate 4 persons.
 										.card-footer.text-center
@@ -66,10 +69,11 @@ block main
 												while i <= 5
 													option=i++
 								.col-lg-4.col-md-6.mb-4.mx-auto
-									.card
+									.card.shadow
 										img.card-img-top(src='/img/smallcottage.jpg', alt='')
 										.card-body
 											h4.card-title Small
+												.text-secondary.float-right ₱400.00
 											p.card-text
 												| A small cottage that can accomodate 8-10 persons.
 										.card-footer.text-center
@@ -78,10 +82,11 @@ block main
 												while i <= 5
 													option=i++
 								.col-lg-4.col-md-6.mb-4.mx-auto
-									.card
+									.card.shadow
 										img.card-img-top(src='/img/bigcottage.jpg', alt='')
 										.card-body
 											h4.card-title Big
+												.text-secondary.float-right ₱800.00
 											p.card-text
 												| A big cottage that can accomodate 10-16 persons.
 										.card-footer.text-center
@@ -91,15 +96,16 @@ block main
 													option=i++
 						.tab.container
 							.row
-								h3.ml-4 Reserve Rooms
+								h3.ml-4.mt-3 Reserve Rooms
 							.row
 								p.ml-4.lead You're almost done! select the quantity of rooms you want to reserve below. (3/3)
 							.row.mt-2
 								.col-lg-4.col-md-6.mb-4.mx-auto
-									.card
+									.card.shadow
 										img.card-img-top(src='/img/smallroom.jpg', alt='')
 										.card-body
-											h4.card-title A/C Small
+											h4.card-title A/C Small 
+												.text-secondary.float-right ₱1000.00
 											p.card-text
 												| a small cozy room that has a twin sized bed.
 										.card-footer.text-center
@@ -108,10 +114,11 @@ block main
 												while i <= 5
 													option=i++
 								.col-lg-4.col-md-6.mb-4.mx-auto
-									.card
+									.card.shadow
 										img.card-img-top(src='/img/bigroom.jpg', alt='')
 										.card-body
 											h4.card-title A/C Big
+												.text-secondary.float-right ₱2000.00
 											p.card-text
 												| Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo magni sapiente, tempore debitis beatae culpa natus architecto.
 										.card-footer.text-center
@@ -120,10 +127,11 @@ block main
 												while i <= 5
 													option=i++
 								.col-lg-4.col-md-6.mb-4.mx-auto
-									.card
+									.card.shadow
 										img.card-img-top(src='/img/pavilion.jpg', alt='')
 										.card-body
-											h4.card-title Pavilion
+											h4.card-title Pavilion 
+												.text-secondary.float-right ₱3000.00
 											p.card-text
 												|A Large spaced cottage that can accomodate 3 Families.
 										.card-footer.text-center
