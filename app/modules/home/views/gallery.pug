@@ -16,16 +16,10 @@ block prepend main
 								.form-group
 									label(for='exampleFormControlFile1') Choose files
 									input#exampleFormControlFile1.form-control-file(type='file' name="strImage" accept="image/*")
-								.form-group
-									label(for='exampleFormControlFile1') Choose files
-									input#exampleFormControlFile1.form-control-file(type='file' name="strImage" accept="image/*")
-								.form-group
-									label(for='exampleFormControlFile1') Choose files
-									input#exampleFormControlFile1.form-control-file(type='file' name="strImage" accept="image/*")
 
-							.modal-footer
-								button.btn.btn-primary(type='submit') Upload
-								button.btn.btn-secondary(type='button', data-dismiss='modal') Cancel
+								.modal-footer
+									button.btn.btn-primary(type='submit') Upload
+									button.btn.btn-secondary(type='button', data-dismiss='modal') Cancel
 
 		.row.text-center.text-lg-left
 			each image in images

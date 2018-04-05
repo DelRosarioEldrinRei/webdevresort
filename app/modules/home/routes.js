@@ -180,7 +180,7 @@ router.route('/reserve/public')
     }
     if(rpremium > 0){
       const queryString = `INSERT INTO tbl_reserve_rooms (intRSReserveID, intRSRoomID, intQTY) VALUES (?,?,?)`
-      db.query(queryString ,[reservekey, boopremiumr, rpremium] , (err, results, fields) => {
+      db.query(queryString ,[reservekey, boopremium, rpremium] , (err, results, fields) => {
       console.log("cottage");   
       if(err) return console.log(err);
       })
@@ -192,7 +192,7 @@ router.route('/reserve/public')
   })
   
 router.route('/admin/verifypending')
-  .get((req, res) => {
+  .get(authMiddleware.isAdmin, (req, res) => {
     var db = require('../../lib/database')();
     var queryString =`SELECT intReserveID, strFirstname, strLastname, datDate, tbl_reserve.booStatus FROM tbl_reserve JOIN tbl_accounts ON tbl_reserve.intReserveAccountID = tbl_accounts.intAccountsID WHERE booStatus = 0 ORDER BY datDate asc ;`
     db.query(queryString, (err, results, fields)=>{
@@ -201,7 +201,7 @@ router.route('/admin/verifypending')
     });
   });
 router.route('/admin/verifypending/:intReserveID')
-  .get((req, res) => {
+  .get(authMiddleware.isAdmin, (req, res) => {
     console.log("aaaaaaaaaaaaaaaaaa")
   var db = require('../../lib/database')(); 
   const queryString = `UPDATE tbl_reserve SET        
@@ -215,7 +215,7 @@ router.route('/admin/verifypending/:intReserveID')
 });
 
 router.route('/admin/verifypending/del/:intReserveID')
-  .get((req, res) => {
+  .get(authMiddleware.isAdmin, (req, res) => {
     console.log("aaaaaaaaaaaaaaaaaa")
   var db = require('../../lib/database')(); 
   const queryString = `UPDATE tbl_reserve SET        
@@ -229,7 +229,7 @@ router.route('/admin/verifypending/del/:intReserveID')
 });
   
 router.route('/admin/reports')
-  .get((req, res) => {
+  .get(authMiddleware.isAdmin, (req, res) => {
     var db = require('../../lib/database')();
     var queryString =`SELECT intReserveID, strFirstname, strLastname, datDate, tbl_reserve.booStatus FROM tbl_reserve JOIN tbl_accounts ON tbl_reserve.intReserveAccountID = tbl_accounts.intAccountsID WHERE booStatus = 1 ORDER BY datDate asc;`
     db.query(queryString, (err, results, fields)=>{
@@ -240,7 +240,7 @@ router.route('/admin/reports')
 
     //Eldrin, para sa modal to (verify Finish).
   router.route('/admin/reports/:intReserveID')
-  .get((req, res) => {
+  .get(authMiddleware.isAdmin, (req, res) => {
     console.log("aaaaaaaaaaaaaaaaaa")
   var db = require('../../lib/database')(); 
   const queryString = `
@@ -256,9 +256,11 @@ router.route('/admin/reports')
   db.query(queryString, (err, results, fields) => {        
     console.log(results)  
     if (err) throw err;
-      res.redirect('/admin/reports/result');
+      res.render('/admin/reportsresults', {custInfo:results});
     })
 });
+
+
 
 
 //RESERVATION

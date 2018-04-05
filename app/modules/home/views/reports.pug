@@ -24,17 +24,5 @@ block main
 						td.text-center #{info.strLastname}
 						td.text-center #{info.datDate.toLocaleString().split(' ')[0]}
 						td.text-center
-							a.h3.text-primary(href="#" data-toggle="modal" data-target="#exampleModal1")
+							a.h3.text-primary(href=`/admin/reports/${custInfo.intReserveID}`)
 								i.fa.fa-list-alt(aria-hidden='true')
-							#exampleModal1.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
-								.modal-dialog.text-left(role='document')
-									.modal-content
-										.modal-header
-											h5#exampleModalLabel.modal-title Reservation Type
-											button.close(type='button', data-dismiss='modal', aria-label='Close')
-												span(aria-hidden='true') ×
-										.modal-body
-											h4 Summary
-
-										.modal-footer
-											button.btn.btn-secondary(type='button', data-dismiss='modal') Cancel
