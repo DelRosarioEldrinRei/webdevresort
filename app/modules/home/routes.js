@@ -280,7 +280,7 @@ router.route('/reservation')
       console.log(reservekey);
       res.render("home/views/reservation", {custInfo:results})
   })
-
+  })
 router.route('/admin/verifycancel')
   .get((req, res) => {
     var user = req.body;
