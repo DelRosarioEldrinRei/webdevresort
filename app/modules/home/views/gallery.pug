@@ -27,4 +27,9 @@ block prepend main
 			each image in images
 				.col-lg-4.col-md-4.col-sm-6
 					a.d-block.mb-4(href=`/img/uploads/${image.strImage}?image=250` data-toggle="lightbox" data-max-width="900")
-						img.shadow.img-fluid.img-thumbnail.min-height(src=`/img/uploads/${image.strImage}?image=250`, alt='')
+						img#imgsrc.shadow.img-fluid.img-thumbnail.min-height(src=`/img/uploads/${image.strImage}?image=250`, alt='')
+						iframe(src=`https://www.facebook.com/plugins/share_button.php?href=https%3A%2F%2Fvillamartharesort.herokuapp.com${imgsrc}&layout=button_count&size=small&mobile_iframe=true&width=69&height=20&appId`, width='69', height='20', style='border:none;overflow:hidden', scrolling='no', frameborder='0', allowtransparency='true')
+
+block addjs
+	script.
+		var imgsrc = document.getElementById("imgsrc").getAttribute('src').replace(/\//g, '%2F').replace(/\?/g, '%3F').replace(/\=/g, '%3D');
