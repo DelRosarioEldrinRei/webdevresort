@@ -224,6 +224,36 @@ router.route('/admin/verifyfinished')
     });
   });
 
+    //Eldrin, para sa modal to.
+  router.route('/admin/verifyfinish/:intReserveID')
+  .get((req, res) => {
+    console.log("aaaaaaaaaaaaaaaaaa")
+  var db = require('../../lib/database')(); 
+  const queryString = `SELECT * FROM tbl_reserve_rooms
+  WHERE intRSReserveID= ${req.params.intReserveID}`;
+  db.query(queryString, (err, results, fields) => {        
+    console.log(results)  
+    if (err) throw err;
+      res.redirect('/admin/verifyfinish', {custInfo:results});
+    }); 
+  const queryString1 = `SELECT * FROM tbl_reserve_tickets
+  WHERE intRTReserveID= ${req.params.intReserveID}`;
+  db.query(queryString1, (err, results, fields) => {        
+    console.log(results)  
+    if (err) throw err;
+      res.redirect('/admin/verifyfinish', {custInfo:results});
+    }); 
+
+  const queryString2 = `SELECT * FROM tbl_reserve_cottage
+  WHERE intRCReserveID= ${req.params.intReserveID}`;
+  db.query(queryString2, (err, results, fields) => {        
+    console.log(results)  
+    if (err) throw err;
+      res.redirect('/admin/verifyfinish', {custInfo:results});
+
+  }); 
+}); 
+
 /**
  * Here we just export said router on the 'index' property of this module.
  */

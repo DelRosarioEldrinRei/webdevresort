@@ -21,8 +21,12 @@ html(lang='en')
 	script(src='/js/tempusdominus-bootstrap-4.min.js')
 	script(src='/js/bootstrap.bundle.js')
 	block addjs
-		script.
-			$(".btn-confirm").click(()=> {
+	script.
+		$(document).ready(function(){
+			$(document).on('click', ".btn-confirm", function(){
+				
+				var x = $(this).parents('tr.text-center').find('.reserveid').text()
+						
 				swal({
 					title: 'Are you sure?',
 					text: "Confirm the customer to be paid",
@@ -38,6 +42,7 @@ html(lang='en')
 							'Customer has payment has been approved',
 							'success'
 						)
+						location.href = '/admin/verifypending/'+x
 					}
 				})
 			});
@@ -64,3 +69,5 @@ html(lang='en')
 				event.preventDefault();
 				$(this).ekkoLightbox();
 			});
+		});
+		
