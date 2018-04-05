@@ -256,7 +256,7 @@ router.route('/admin/reports')
   db.query(queryString, (err, results, fields) => {        
     console.log(results)  
     if (err) throw err;
-      res.render('/admin/reportsresults', {custInfo:results});
+      res.redirect('/admin/reportsresults');
     })
 });
 
